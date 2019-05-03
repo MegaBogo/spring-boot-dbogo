@@ -2,6 +2,7 @@ package com.dbogo.web;
 
 import com.dbogo.web.domain.Notice;
 import com.dbogo.web.persistence.NoticeRepository;
+import com.fasterxml.jackson.databind.util.ArrayBuilders;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
+import com.querydsl.core.BooleanBuilder;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -94,6 +97,7 @@ public class NoticeRepositoryTests {
     }
     */
 
+    /*
     @Test
     public void testSeqPagingSort() {
         //Page
@@ -111,6 +115,24 @@ public class NoticeRepositoryTests {
         list.forEach(notice -> System.out.println(notice));
 
     }
+    */
 
+    /*
+    Predicate는 단언하다. 확신하다는 의미. 즉 boolean으로 리턴되는 결과 데이터를 만들어야한다.
+    주로 BooleanBuilder를 이용해서 생성
+    */
+
+    @Test
+    public void testPredicate() {
+
+        String type = "t";
+        String keyword = "17";
+
+        
+
+
+
+
+    }
 
 }
