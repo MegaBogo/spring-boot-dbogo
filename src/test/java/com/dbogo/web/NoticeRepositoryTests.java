@@ -1,6 +1,7 @@
 package com.dbogo.web;
 
 import com.dbogo.web.domain.Notice;
+import com.dbogo.web.domain.QNotice;
 import com.dbogo.web.persistence.NoticeRepository;
 import com.fasterxml.jackson.databind.util.ArrayBuilders;
 import org.junit.Test;
@@ -121,15 +122,34 @@ public class NoticeRepositoryTests {
     Predicate는 단언하다. 확신하다는 의미. 즉 boolean으로 리턴되는 결과 데이터를 만들어야한다.
     주로 BooleanBuilder를 이용해서 생성
     */
-
     @Test
     public void testPredicate() {
 
-        String type = "t";
-        String keyword = "17";
+        String type ="t";
+        String keyword ="17";
 
-        
+        BooleanBuilder builder = new BooleanBuilder();
 
+        QNotice notice = QNotice.notice;
+
+        if(type.equals("t")) {
+            builder.and(notice.title.like("%"+keyword+"%"));
+        }
+
+        builder.and(notice.seq.gt(0L));
+
+        Pageable pageable = PageRequest.of(0, 10);
+
+        Page<Notice> result = repo.findBySeqGreaterThan(0L, pageable);
+
+        System.out.println("PAGE SIZE : " + result.getSize());
+        System.out.println("TOTAL PAGES : " + result.getTotalPages());
+        System.out.println("TOTAL COUNT : " + result.getTotalElements());
+        System.out.println("NEXT : " + result.nextPageable());
+
+        List<Notice> list = result.getContent();
+
+        list.forEach(n -> System.out.println(n));
 
 
 
