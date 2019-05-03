@@ -14,10 +14,11 @@ import javax.persistence.Table;
 @ToString
 @Entity
 @Table(name = "Member")
-@EqualsAndHashCode(of="userId")
+@EqualsAndHashCode(of="id")
 public class Member {
 
     @Id
+    private int id;
     private String userId;
     private String pwd;
     private String nickname;
