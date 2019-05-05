@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+
+    <div th:insert="~{fragments/header::header}"></div>
+
     [[${now}]]<br>
     [[${price}]]<br>
     [[${title}]]<br>
@@ -33,5 +36,7 @@
         <li><a th:href="@{~/sample1}">/sample1가 별 차이 없음.</a></li>
         <li><a th:href="@{/sample1(p1='aaa',p2='bbbb')}">파타미터 생성</a></li>
     </ul>
+
+    <div th:insert="~{fragments/footer::footer}"></div>
 </body>
 </html>
