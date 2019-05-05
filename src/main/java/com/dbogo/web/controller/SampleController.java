@@ -56,4 +56,9 @@ public class SampleController {
         model.addAttribute("title","This is a just sample.");
         model.addAttribute("options", Arrays.asList("AAAA","BBBB","CCCC","DDDD"));
     }
+
+    @GetMapping("/sample/hello")
+    public void hello() {
+
+    }
 }
