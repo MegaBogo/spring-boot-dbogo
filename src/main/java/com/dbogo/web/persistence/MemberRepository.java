@@ -9,7 +9,7 @@ import java.util.List;
 public interface MemberRepository extends CrudRepository<Member, Long> {
 
     @Query("SELECT m.id, count(p) FROM Member m LEFT OUTER JOIN Profile p " +
-    " ON m.id = p.member WHERE m.id = ?1 GROUP BY m")
+            " ON m.id = p.member WHERE m.id = ?1 GROUP BY m")
     public List<Object[]> getMemberWithProfileCount(int memberId);
 
     @Query("SELECT m, p FROM Member m LEFT OUTER JOIN Profile p " +

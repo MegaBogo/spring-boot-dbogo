@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
+
 import com.querydsl.core.BooleanBuilder;
 
 
@@ -29,15 +30,15 @@ public class NoticeRepositoryTests {
 
     @Test
     public void inspect() {
-      Class<?> clz = repo.getClass();
-      System.out.println(clz.getName());
+        Class<?> clz = repo.getClass();
+        System.out.println(clz.getName());
 
-      Class<?>[] interfaces = clz.getInterfaces();
+        Class<?>[] interfaces = clz.getInterfaces();
 
-      Stream.of(interfaces).forEach(inter->System.out.println(inter.getName()));
+        Stream.of(interfaces).forEach(inter -> System.out.println(inter.getName()));
 
-      Class<?> superClasses = clz.getSuperclass();
-      System.out.println(superClasses.getName());
+        Class<?> superClasses = clz.getSuperclass();
+        System.out.println(superClasses.getName());
 
     }
 
@@ -125,15 +126,15 @@ public class NoticeRepositoryTests {
     @Test
     public void testPredicate() {
 
-        String type ="t";
-        String keyword ="17";
+        String type = "t";
+        String keyword = "17";
 
         BooleanBuilder builder = new BooleanBuilder();
 
         QNotice notice = QNotice.notice;
 
-        if(type.equals("t")) {
-            builder.and(notice.title.like("%"+keyword+"%"));
+        if (type.equals("t")) {
+            builder.and(notice.title.like("%" + keyword + "%"));
         }
 
         builder.and(notice.seq.gt(0L));
@@ -150,7 +151,6 @@ public class NoticeRepositoryTests {
         List<Notice> list = result.getContent();
 
         list.forEach(n -> System.out.println(n));
-
 
 
     }

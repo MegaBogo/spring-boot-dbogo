@@ -5,38 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-    <div th:insert="~{fragments/header::header}"></div>
+<div th:insert="~{fragments/header::header}"></div>
 
 
-    [[${now}]]<br>
-    [[${price}]]<br>
-    [[${title}]]<br>
-    [[${options}]]<br>
-    <h1>날짜 관련 #dates, #calendars</h1>
-    <h2>[[${#dates.format(now, 'yyyy-MM-dd')}]]</h2>
-    <div th:with="timeValue=${#dates.createToday()}">
-        <p>[[${timeValue}]]</p>
-    </div>
-    <h1>숫자 관련 #numbers</h1>
-    <h2 th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></h2>
-    <div th:with="priceValue=99.87654">
-        <p th:text="${#numbers.formatInteger(priceValue, 3, 'COMMA')}"></p>
-        <p th:text="${#numbers.formatDecimal(priceValue, 5, 10, 'POINT')}"></p>
-    </div>
-    <h1>문자 관련 #strings</h1>
-    <h1 th:text="${title}"></h1>
-    <span th:utext="${#strings.replace(title,'s','<b>s<b/>')}"></span>
-    <ul>
-        <li th:each="str:${#strings.listSplit(title, ' ')}">[[${str}]]</li>
-    </ul>
-    <h1>Thymeleaf 링크 처리</h1>
-    <ul>
-        <li><a th:href="@{http://localhost:8080/sample1}">샘플1</a></li>
-        <li><a th:href="@{/sample1}">컨텍스트의 경로 반영샘플1</a></li>
-        <li><a th:href="@{~/sample1}">/sample1가 별 차이 없음.</a></li>
-        <li><a th:href="@{/sample1(p1='aaa',p2='bbbb')}">파타미터 생성</a></li>
-    </ul>
+[[${now}]]<br>
+[[${price}]]<br>
+[[${title}]]<br>
+[[${options}]]<br>
+<h1>날짜 관련 #dates, #calendars</h1>
+<h2>[[${#dates.format(now, 'yyyy-MM-dd')}]]</h2>
+<div th:with="timeValue=${#dates.createToday()}">
+    <p>[[${timeValue}]]</p>
+</div>
+<h1>숫자 관련 #numbers</h1>
+<h2 th:text="${#numbers.formatInteger(price, 3, 'COMMA')}"></h2>
+<div th:with="priceValue=99.87654">
+    <p th:text="${#numbers.formatInteger(priceValue, 3, 'COMMA')}"></p>
+    <p th:text="${#numbers.formatDecimal(priceValue, 5, 10, 'POINT')}"></p>
+</div>
+<h1>문자 관련 #strings</h1>
+<h1 th:text="${title}"></h1>
+<span th:utext="${#strings.replace(title,'s','<b>s<b/>')}"></span>
+<ul>
+    <li th:each="str:${#strings.listSplit(title, ' ')}">[[${str}]]</li>
+</ul>
+<h1>Thymeleaf 링크 처리</h1>
+<ul>
+    <li><a th:href="@{http://localhost:8080/sample1}">샘플1</a></li>
+    <li><a th:href="@{/sample1}">컨텍스트의 경로 반영샘플1</a></li>
+    <li><a th:href="@{~/sample1}">/sample1가 별 차이 없음.</a></li>
+    <li><a th:href="@{/sample1(p1='aaa',p2='bbbb')}">파타미터 생성</a></li>
+</ul>
 
-    <div th:insert="~{fragments/footer::footer}"></div>
+<div th:insert="~{fragments/footer::footer}"></div>
 </body>
 </html>

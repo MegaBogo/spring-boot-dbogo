@@ -5,7 +5,6 @@ import com.dbogo.web.domain.MemberVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -41,20 +40,20 @@ public class SampleController {
 
         List<MemberVO> list = new ArrayList<>();
 
-        IntStream.range(1,5).forEach(i->{
-          list.add(new MemberVO(123, "u0"+i, "p0" + i, "테스트" +i,
-                  new Timestamp(System.currentTimeMillis())));
+        IntStream.range(1, 5).forEach(i -> {
+            list.add(new MemberVO(123, "u0" + i, "p0" + i, "테스트" + i,
+                    new Timestamp(System.currentTimeMillis())));
         });
 
-        model.addAttribute("list",list);
+        model.addAttribute("list", list);
     }
 
     @GetMapping("/sample4")
     public void sample4(Model model) {
         model.addAttribute("now", new Date());
         model.addAttribute("price", 123456789);
-        model.addAttribute("title","This is a just sample.");
-        model.addAttribute("options", Arrays.asList("AAAA","BBBB","CCCC","DDDD"));
+        model.addAttribute("title", "This is a just sample.");
+        model.addAttribute("options", Arrays.asList("AAAA", "BBBB", "CCCC", "DDDD"));
     }
 
     @GetMapping("/sample/hello")

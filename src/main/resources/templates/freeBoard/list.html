@@ -5,6 +5,12 @@
 <div layout:fragment="content">
     <div class="panel-heading">List page</div>
     <div class="panel-body">
-        list content....
+        <p>[[${result}]]</p>
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="board:${result.content}">[[${board}]]</li>
+            </ul>
+
+        </div>
     </div>
 </div>

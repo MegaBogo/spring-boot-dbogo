@@ -15,8 +15,8 @@ import java.util.List;
 @Setter
 @ToString(exclude = "board")
 @Entity
-@Table(name = "Comment", indexes = {@Index(unique = false, columnList = "board_seq" )} )
-@EqualsAndHashCode(of="seq")
+@Table(name = "Comment", indexes = {@Index(unique = false, columnList = "board_seq")})
+@EqualsAndHashCode(of = "seq")
 public class Comment {
 
     /*

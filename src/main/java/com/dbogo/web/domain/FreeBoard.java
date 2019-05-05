@@ -16,7 +16,7 @@ import java.util.List;
 @ToString(exclude = "replies")
 @Entity
 @Table(name = "FreeBoard")
-@EqualsAndHashCode(of="seq")
+@EqualsAndHashCode(of = "seq")
 public class FreeBoard {
 
     @Id
@@ -33,8 +33,8 @@ public class FreeBoard {
 
     // mappedBy는 ~에 매이게 된다이므로 종속적인 클래스의 인스턴스 변수를 지정함.
     @OneToMany(mappedBy = "board"
-             , cascade = CascadeType.ALL
-             , fetch = FetchType.LAZY)
+            , cascade = CascadeType.ALL
+            , fetch = FetchType.LAZY)
     private List<Comment> replies;
 
 

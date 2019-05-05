@@ -155,6 +155,7 @@ public class FreeBoardTests {
 
      */
 
+    /* 검색 조건이 없을 때 페이지 처리
     @Test
     public void testList4() {
         Pageable pageable = PageRequest.of(0,10,Sort.Direction.DESC, "seq");
@@ -167,6 +168,21 @@ public class FreeBoardTests {
         log.info("================================");
 
         result.getContent().forEach(freeBoard -> log.info(""+freeBoard));
-        
+
+    }
+    */
+    @Test
+    public void testList5() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
+
+        Page<FreeBoard> result = boardRepo.findAll(
+                boardRepo.makePredicate("t", "제목"), pageable);
+
+        log.info("PAGE : " + result.getPageable());
+
+        log.info("================================");
+
+        result.getContent().forEach(freeBoard -> log.info("" + freeBoard));
+
     }
 }

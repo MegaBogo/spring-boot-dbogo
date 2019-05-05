@@ -14,8 +14,8 @@ import java.sql.Timestamp;
 @Setter
 @ToString
 @Entity
-@Table(name="Notice")
-@EqualsAndHashCode(of="seq")
+@Table(name = "Notice")
+@EqualsAndHashCode(of = "seq")
 public class Notice {
 
     @Id
