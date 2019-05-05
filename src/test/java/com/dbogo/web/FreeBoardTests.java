@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -143,11 +144,29 @@ public class FreeBoardTests {
     Hibernate 5.2(Spring 2.0)는 연관관계가 없는 엔티티 간에도 조인이 가능
     Hibernate 5.0(Spring 1.5.4)는 연관관계가 존재하는 경우에 조인을 이용해서 처리가 가능
      */
+    /*
     @Test
     public void testList3() {
         Pageable page = PageRequest.of(0, 10, Sort.Direction.DESC, "seq");
 
         boardRepo.getPage(page).forEach(arr ->
                 log.info(Arrays.toString(arr)));
+    }
+
+     */
+
+    @Test
+    public void testList4() {
+        Pageable pageable = PageRequest.of(0,10,Sort.Direction.DESC, "seq");
+
+        Page<FreeBoard> result = boardRepo.findAll(
+                boardRepo.makePredicate(null,null),pageable);
+
+        log.info("PAGE : " + result.getPageable());
+
+        log.info("================================");
+
+        result.getContent().forEach(freeBoard -> log.info(""+freeBoard));
+        
     }
 }
