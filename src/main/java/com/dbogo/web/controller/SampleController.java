@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -45,5 +47,13 @@ public class SampleController {
         });
 
         model.addAttribute("list",list);
+    }
+
+    @GetMapping("/sample4")
+    public void sample4(Model model) {
+        model.addAttribute("now", new Date());
+        model.addAttribute("price", 123456789);
+        model.addAttribute("title","This is a just sample.");
+        model.addAttribute("options", Arrays.asList("AAAA","BBBB","CCCC","DDDD"));
     }
 }

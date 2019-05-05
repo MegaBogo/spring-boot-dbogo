@@ -5,12 +5,47 @@
     <title>Title</title>
 </head>
 <body>
+    <!-- inline으로 작성 -->
+    <script th:inline="javascript">
+        var result = [[${list}]];
+    </script>
+    var result = [[${list}]];
     <ul>
         <li th:each="member : ${list}">
+            <span th:if="${member.mid}">[[${member.mid}]]ggg..</span>
             <span th:text="${member.mid}"></span>
             <span th:text="${member.mname}"></span>
             <span th:text="${#dates.format(member.regDate, 'yyyy-MM-dd')}"></span>
         </li>
     </ul>
+    <!-- Thymeleaf 의 유틸리티 객체 -->
+    <p>기본적으로 표현식을 통해서 데이터를 출력하는 역할이 중심이지만, 이를 돕기 위한 다양한 객체들을 지원</p>
+    <h2>Expression Basic Objects(표현식 기본 객체)</h2>
+    <ul>
+        <li>#ctx</li>
+        <li>#vars</li>
+        <li>#locale</li>
+        <li>#httpServletRequest</li>
+        <li>#httpSession</li>
+    </ul>
+    <h2>Expression Utility Objects(표현식 유틸 객체)</h2>
+    <ul>
+        <li>#dates</li>
+        <li>#calendars</li>
+        <li>#numbers</li>
+        <li>#strings</li>
+        <li>#objects</li>
+        <li>#bools</li>
+        <li>#arrays</li>
+        <li>#lists</li>
+        <li>#sets</li>
+        <li>#maps</li>
+        <li>#aggregates</li>
+        <li>#messages</li>
+    </ul>
+    <h2>유틸리티 객체</h2>
+    <p>날짜 Formatting</p>
+    ${#dates.format(member.regdate, 'yyyy-mm-dd')}
+
 </body>
 </html>
