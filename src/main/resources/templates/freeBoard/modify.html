@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout1}">
+<div layout:fragment="content">
+    <div class="panel-heading">Modify Page</div>
+    <div class="panel-body">
+        <form th:action="@{/freeBoard/modify}" method="post">
+            <input type="hidden" name="seq" th:value="${vo.seq}" />
+            <div class="form-group">
+                <label>제목</label>
+                <input class="form-control" name="title" th:value="${vo.title}" />
+            </div>
+            <div class="form-group">
+                <label>내용</label>
+                <textarea class="form-control" rows="3" name="content"
+                          th:text="${vo.content}">
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-default">수정</button>
+            <a class="btn btn-danger del-btn" th:data-id="${vo.seq}">삭제</a>
+            <a th:href="@{/freeBoard/view/{id}(id=${vo.seq})}">취소</a>
+        </form>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+    window.onload = function() {
+        var delBtn = document.querySelector(".del-btn");
+        delBtn.addEventListener('click', function (e) {
+
+            if(confirm("게시글을 삭제하겠습니까?")) {
+                var url = /*[[@{/freeBoard/delete/}]]*/'';
+
+                var frm = document.createElement("form");
+                frm.setAttribute("charset", "UTF-8");
+                frm.setAttribute("method", "Post");
+                frm.setAttribute("action", url+e.currentTarget.dataset["id"]);
+
+                document.body.appendChild(frm);
+                frm.submit();
+            }
+
+        });
+    }
+    </script>
+</th:block>

@@ -12,6 +12,10 @@ public class PageVO {
     private int page;
     private int size;
 
+    //검색 조건
+    private String keyword;
+    private String type;
+
     public PageVO() {
         this.page = 1;
         this.size = DEFAULT_SIZE;
@@ -31,6 +35,16 @@ public class PageVO {
 
     public void setSize(int size) {
         this.size = size < DEFAULT_SIZE || size > DEFAULT_MAX_SIZE ? DEFAULT_SIZE : size;
+    }
+
+    public String getKeyword() { return keyword; }
+    public String getType() { return type; }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Pageable makePageable(int direction, String... props) {

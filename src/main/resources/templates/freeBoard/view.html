@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout1}">
+<div layout:fragment="content">
+
+    <div class="panel-heading">View Page</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label>번호</label>
+            <span class="form-control">[[${vo.seq}]]</span>
+        </div>
+        <div class="form-group">
+            <label>제목</label>
+            <span class="form-control">[[${vo.title}]]</span>
+        </div>
+        <div class="form-group">
+            <label>내용</label>
+            <span class="form-control">[[${vo.content}]]</span>
+        </div>
+        <div class="form-group">
+            <label>글쓴이</label>
+            <span class="form-control">[[${vo.regId}]]</span>
+        </div>
+        <div class="form-group">
+            <label>작성일</label>
+            <span class="form-control">[[${#dates.format(vo.regDate, 'yyyy-MM-dd HH:mm')}]]</span>
+        </div>
+        <div class="form-group">
+            <label>수정일</label>
+            <span class="form-control">[[${#dates.format(vo.updateDate, 'yyyy-MM-dd HH:mm')}]]</span>
+        </div>
+        <a th:href="@{/freeBoard/modify/{id}(id=${vo.seq})}">수정</a>
+    </div>
+</div>
