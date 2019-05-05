@@ -5,12 +5,31 @@
 <div layout:fragment="content">
     <div class="panel-heading">List page</div>
     <div class="panel-body">
+        <p>sfsffs</p>
         <p>[[${result}]]</p>
         <div>
-            <ul class="list-group">
-                <li class="list-group-item" th:each="board:${result.content}">[[${board}]]</li>
+            <ul class="list-group" th:with="list=${result.result}">
+                <li class="list-group-item" th:each="board:${list.content}">[[${board}]]</li>
             </ul>
-
         </div>
+
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:if="${result.prevPage}">
+                    <a th:href="@{/freeBoard/list(page=${result.prevPage.pageNumber} + 1,size=${result.currentPage.pageSize})}">PREV [[${result.prevPage.pageNumber} + 1 ]]</a>
+                </li>
+                <!-- classappend와 삼항 연산자를 이용 -->
+                <li class="page-item" th:classappend="${p.pageNumber == result.currentPageNum-1} ? active : ''"
+                    th:each="p:${result.pageList}">
+                    <a th:href="@{/freeBoard/list(page=${p.pageNumber} + 1,size=${result.currentPage.pageSize})}">[[${p.pageNumber} + 1]]</a>
+                </li>
+                <li class="page-item" th:if="${result.nextPage}">
+                    <a th:href="@{/freeBoard/list(page=${result.nextPage.pageNumber} + 1,size=${result.currentPage.pageSize})}">NEXT [[${result.nextPage.pageNumber} + 1 ]]</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- end page display -->
     </div>
+    <!-- end panel -->
 </div>
+<!-- end fragment -->

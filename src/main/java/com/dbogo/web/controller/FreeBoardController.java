@@ -3,6 +3,7 @@ package com.dbogo.web.controller;
 
 import com.dbogo.web.domain.FreeBoard;
 import com.dbogo.web.persistence.FreeBoardRepository;
+import com.dbogo.web.vo.PageMaker;
 import com.dbogo.web.vo.PageVO;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,11 @@ public class FreeBoardController {
                      , PageVO vo) {
 
         Pageable page = vo.makePageable(0, "seq");
-
         Page<FreeBoard> result = repo.findAll(repo.makePredicate(null, null), page);
-        model.addAttribute("result", result);
+
+        log.info("" + page);
+        log.info("" + result);
+
+        model.addAttribute("result", new PageMaker(result));
     }
 }
