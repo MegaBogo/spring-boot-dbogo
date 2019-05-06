@@ -12,4 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Log
 public class CommentController {
 
+    Test
+    
 }
