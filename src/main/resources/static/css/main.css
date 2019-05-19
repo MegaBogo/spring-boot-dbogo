@@ -7,12 +7,12 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
-
+ 
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
-html {
+   html {
     color: #222;
     font-size: 1em;
     line-height: 1.4;
@@ -96,21 +96,37 @@ textarea {
 }
 
 
-/* ==========================================================================
-  Author's custom styles
-  ========================================================================== */
 
 
-/* ==========================================================================
-  Helper classes
-  ========================================================================== */
+ /* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* ==========================================================================
+   Helper classes
+   ========================================================================== */
 
 /*
  * Hide visually and from screen readers
  */
 
-.hidden {
-    display: none !important;
+ .hidden {
+  display: none !important;
 }
 
 /*
@@ -123,15 +139,15 @@ textarea {
 */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap; /* 1 */
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
 }
 
 /*
@@ -142,13 +158,13 @@ textarea {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-    white-space: inherit;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
 }
 
 /*
@@ -156,7 +172,7 @@ textarea {
 */
 
 .invisible {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /*
@@ -173,40 +189,40 @@ textarea {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+  content: " "; /* 1 */
+  display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
-
+ 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+   @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
-
+ 
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
    https://www.phpied.com/delay-loading-your-print-css/
    ========================================================================== */
 
-@media print {
+   @media print {
     *,
     *:before,
     *:after {
@@ -234,6 +250,7 @@ textarea {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
+
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
@@ -242,7 +259,6 @@ textarea {
     pre {
         white-space: pre-wrap !important;
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
@@ -253,6 +269,7 @@ textarea {
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
+
     thead {
         display: table-header-group;
     }

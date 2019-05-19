@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString(exclude = "replies")
+@ToString(exclude = "Comment")
 @Entity
 @Table(name = "FreeBoard")
 @EqualsAndHashCode(of = "seq")
@@ -32,7 +32,7 @@ public class FreeBoard {
     private Timestamp updateDate;
 
     // mappedBy는 ~에 매이게 된다이므로 종속적인 클래스의 인스턴스 변수를 지정함.
-    @OneToMany(mappedBy = "board"
+    @OneToMany(mappedBy = "freeBoard"
             , cascade = CascadeType.ALL
             , fetch = FetchType.LAZY)
     private List<Comment> replies;

@@ -10,8 +10,8 @@ import java.util.List;
 public interface CommentRepository extends CrudRepository<Comment, Long> {
 
 
-    @Query("SELECT r FROM Comment r WHERE r.board = ?1 " + " AND r.seq > 0 ORDER BY r.seq ASC")
-    public List<Comment> getCommentOfFreeBord(FreeBoard board);
+    @Query("SELECT r FROM Comment r WHERE r.freeBoard = ?1 " + " AND r.seq > 0 ORDER BY r.seq ASC")
+    public List<Comment> getCommentOfFreeBord(FreeBoard freeBoard);
 
 
 

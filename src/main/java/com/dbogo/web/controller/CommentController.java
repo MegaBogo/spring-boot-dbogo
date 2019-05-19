@@ -21,25 +21,25 @@ public class CommentController {
     @Autowired
     private CommentRepository commentRepo;
 
-    @PostMapping("/{bno}")
+    @PostMapping("/{seq}")
     public ResponseEntity<List<Comment>> add(
-            @PathVariable("bno") Long bno,
+            @PathVariable("seq") Long seq,
             @RequestBody Comment comment) {
 
 
-        FreeBoard board = new FreeBoard();
-        board.setSeq(bno);
+        FreeBoard freeBoard = new FreeBoard();
+        freeBoard.setSeq(seq);
         commentRepo.save(comment);
 
 
-        return new ResponseEntity<>(getListByFreeBoard(board), HttpStatus.CREATED);
+        return new ResponseEntity<>(getListByFreeBoard(freeBoard), HttpStatus.CREATED);
 
     }
 
-    private List<Comment> getListByFreeBoard(FreeBoard board) throws RuntimeException {
-        log.info("getListByFreeBoard .... " + board);
+    private List<Comment> getListByFreeBoard(FreeBoard freeBoard) throws RuntimeException {
+        log.info("getListByFreeBoard .... " + freeBoard);
 
-        return commentRepo.getCommentOfFreeBord(board);
+        return commentRepo.getCommentOfFreeBord(freeBoard);
     }
 
 

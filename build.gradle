@@ -35,6 +35,7 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
 
 def querydslSrcDir = 'src/main/generated'

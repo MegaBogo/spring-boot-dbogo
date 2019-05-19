@@ -1,5 +1,6 @@
 package com.dbogo.web.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,10 +14,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString(exclude = "board")
 @Entity
-@Table(name = "Comment", indexes = {@Index(unique = false, columnList = "board_seq")})
+@Table(name="Comment")
 @EqualsAndHashCode(of = "seq")
+@ToString(exclude = "FreeBoard")
 public class Comment {
 
     /*
@@ -35,6 +36,9 @@ public class Comment {
     @UpdateTimestamp
     private Timestamp updateDate;
 
-    @ManyToOne
-    private FreeBoard board;
+    //JSON으로 변환되지 않도록.
+    @JsonIgnore
+    //양쪽 테이블을 조회하지 않도록 지연 로딩
+    @ManyToOne(fetch = FetchType.LAZY)
+    private FreeBoard freeBoard;
 }
