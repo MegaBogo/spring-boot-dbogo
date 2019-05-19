@@ -3,6 +3,7 @@ package com.dbogo.web.controller;
 
 import com.dbogo.web.domain.FreeBoard;
 import com.dbogo.web.persistence.FreeBoardRepository;
+import com.dbogo.web.storage.StorageService;
 import com.dbogo.web.vo.PageMaker;
 import com.dbogo.web.vo.PageVO;
 import lombok.extern.java.Log;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -21,6 +23,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/freeBoard/")
 @Log
 public class FreeBoardController {
+
+    private final StorageService storageService;
+
+    @Autowired
+    public FreeBoardController(StorageService storageService) {
+        this.storageService = storageService;
+    }
+
     @Autowired
     private FreeBoardRepository repo;
 
@@ -43,7 +53,13 @@ public class FreeBoardController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("vo")FreeBoard vo, RedirectAttributes rttr) {
+    public String register(@ModelAttribute("vo")FreeBoard vo
+                           , @RequestParam("file") MultipartFile file
+                           , RedirectAttributes rttr) {
+
+
+        storageService.store(file);
+
         log.info("register post");
         log.info(""+vo);
 
